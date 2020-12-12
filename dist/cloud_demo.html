@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Functions and Variables Example</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="header">
+        </div>
+
+        <div class="events">
+        <h4>Events</h4>
+
+        <!-- Counter example (received as event) -->
+        <h6>Aktuelle Postmenge: {{ Postmenge_0 }}</h6>
+        <button v-on:click="getVariables3(0)">Aktuelle Mitteilung</button>
+        <p>Öffnungscounter: {{ Oeffnungscounter }}</p>
+        <p>Klappencounter: {{ Klappencounter }}</p>
+        <p>Link zu den letzten Events:</p>
+        <p><a href="/events.html">Events</a></p>
+
+    </div>
+        
+        <div class="container">
+            <div class="left">
+        <hr>
+        <h4>Variables</h4>
+        <!-- Read variables example -->
+        <p>Variable a1: {{ a1_0 }} </p>
+        <p>Variable b1: {{ b1_0 }} </p>
+        <p>Variable c1: {{ c1_0 }} </p>
+        <p>Variable to: {{ to_0 }} </p>
+        <button v-on:click="getVariables(0)">Get Variables für Briefkasten-Öffnung</button>
+        <br>
+        <p>Variable v1: {{ v1_0 }} </p>
+        <p>Variable w1: {{ w1_0 }} </p>
+        <p>Variable x1: {{ x1_0 }} </p>
+        <p>Variable tk: {{ tk_0 }} </p>
+        <button v-on:click="getVariables1(0)">Get Variables für Briefkasten-Klappe</button>
+
+    </div>
+
+    <div class="right">
+        <hr>
+        <h4>Aktuelles Gewicht</h4> 
+        <p>Variable weight: {{ weight_0 }} </p>
+        <button v-on:click="getVariables2(0)">Get Variable für aktuelles Gewicht in Gramm</button>
+
+        <!-- Call functions example  -->
+        <h4>Functions</h4>
+        <p>Remote Funktionen für Brief Einwurf (Klappe) und Entnahme (Öffnung)</p>
+        <button v-on:click="remoteKlappe(0)  && Klappencounter ++">Remote Klappe</button>
+        <button v-on:click="remoteOeffnung(0)">Remote Öffnung</button>
+    </div>
+</div>
+    <footer>
+         All rights reserved
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="cloud_demo.js"></script>
+</body>
+
+</html>

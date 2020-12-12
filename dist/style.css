@@ -1,0 +1,44 @@
+.header{
+    overflow: hidden;
+    background-image: url("Post_logo_3lang_quer.jpg");
+    padding: 55px 10px;
+}
+* {
+    background-color: #E0FFFF;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+  }
+.events {
+    grid-column: 1;
+    grid-row: 1 / 5;
+    text-align: center;
+    font-size: 30px;
+  }
+.left {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    text-align: center;
+    font-size: 30px;
+  }
+.right {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    text-align: center;
+    font-size: 30px;
+  }
+footer {
+    background-color: rgb(64, 132, 233);
+    color: white;
+    padding: 0.5em;
+    text-align: center;
+}
+button{
+    background-color: white;
+}
+p{
+    font-size: 20px;
+}
