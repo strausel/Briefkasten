@@ -16,13 +16,11 @@ var app = new Vue({
 
         weight_0: "unknown",
         Postmenge_0: "unknown",
+        Wochentag_0: "unknown",
+        Datum_0: "unknown",
 
-
-        TotalWeight: 0,
         Oeffnungscounter: 0,    // Öffnungszähler
         Klappencounter: 0,       // Klappenzähler
-        Wochentag: "unknown",
-        Datum: "unknown",
 
     },
     // This function is executed once when the page is loaded.
@@ -239,6 +237,35 @@ var app = new Vue({
                 .catch(error => {
                     alert("Could not read variable Postmenge of device number " + nr + ".\n\n" + error)
                 })
+                axios.get(rootUrl + "/api/device/" + nr + "/variable/Datum")
+                .then(response => {
+                    // Handle the response from the server
+                    var Datum = response.data.result;
+                    if (nr === 0) {
+                        this.Datum_0 = Datum;
+                    }
+                    else {
+                        console.log("unknown device number: " + nr);
+                    }
+                })
+                .catch(error => {
+                    alert("Could not read variable Datum of device number " + nr + ".\n\n" + error)
+                })
+
+                axios.get(rootUrl + "/api/device/" + nr + "/variable/Wochentag")
+                .then(response => {
+                    // Handle the response from the server
+                    var Wochentag = response.data.result;
+                    if (nr === 0) {
+                        this.Wochentag_0 = Wochentag;
+                    }
+                    else {
+                        console.log("unknown device number: " + nr);
+                    }
+                })
+                .catch(error => {
+                    alert("Could not read variable Wochentag of device number " + nr + ".\n\n" + error)
+                })
                 
             },
             // react on events: update the variables to be displayed
@@ -252,7 +279,6 @@ var app = new Vue({
                 this.Klappencounter = ev.eventData.counter;
                 //this.klappeSync = ev.eventData.klappeSync;
             }
-
         },
         
     }
