@@ -1,4 +1,5 @@
 var rootUrl = window.location.origin; // get the root URL, e.g. https://example.herokuapp.com
+//var moment = require('moment');
 
 var app = new Vue({
     el: "#app",
@@ -16,8 +17,12 @@ var app = new Vue({
         weight_0: "unknown",
         Postmenge_0: "unknown",
 
+
+        TotalWeight: 0,
         Oeffnungscounter: 0,    // Öffnungszähler
         Klappencounter: 0,       // Klappenzähler
+        Wochentag: "unknown",
+        Datum: "unknown",
 
     },
     // This function is executed once when the page is loaded.
@@ -38,18 +43,7 @@ var app = new Vue({
                 this.message = "Your browser does not support server-sent events.";
             }
         },
-        // react on events: update the variables to be displayed
-        updateVariables(ev) {
-            // Event "bump"
-            if (ev.eventName === "oeffnung") {
-                this.Oeffnungscounter = ev.eventData.counter;
-                //this.oeffnungSync = ev.eventData.oeffnungSync;
-            }
-            if (ev.eventName === "klappe") {
-                this.Klappencounter = ev.eventData.counter;
-                //this.klappeSync = ev.eventData.klappeSync;
-            }
-        },
+        
         // Remote Funktionen aufrufen
         remoteKlappe: function (nr) {
             var duration = 2000; // blinking duration in milliseconds
@@ -231,10 +225,6 @@ var app = new Vue({
                 .catch(error => {
                     alert("Could not read variable weight of device number " + nr + ".\n\n" + error)
                 })
-
-            },
-
-            getVariables3: function (nr) {
                 axios.get(rootUrl + "/api/device/" + nr + "/variable/Postmenge")
                 .then(response => {
                     // Handle the response from the server
@@ -249,9 +239,21 @@ var app = new Vue({
                 .catch(error => {
                     alert("Could not read variable Postmenge of device number " + nr + ".\n\n" + error)
                 })
-
-            }   
                 
+            },
+            // react on events: update the variables to be displayed
+        updateVariables(ev) {
+            // Event "bump"
+            if (ev.eventName === "oeffnung") {
+                this.Oeffnungscounter = ev.eventData.counter;
+                //this.oeffnungSync = ev.eventData.oeffnungSync;
+            }
+            if (ev.eventName === "klappe") {
+                this.Klappencounter = ev.eventData.counter;
+                //this.klappeSync = ev.eventData.klappeSync;
+            }
+
+        },
         
     }
 })

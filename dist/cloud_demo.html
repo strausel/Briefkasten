@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Functions and Variables Example</title>
+    <title>Der smarte Briefkasten</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -15,15 +15,16 @@
         </div>
 
         <div class="events">
-        <h4>Events</h4>
+        <h4>Infos zur Postmenge und Briefkastenöffnung</h4>
 
         <!-- Counter example (received as event) -->
         <h6>Aktuelle Postmenge: {{ Postmenge_0 }}</h6>
-        <button v-on:click="getVariables3(0)">Aktuelle Mitteilung</button>
+         <p>Postmenge in Gramm: {{ weight_0 }} </p>
+        <button v-on:click="getVariables2(0)">aktuelle Info zur Postmenge & Gewicht</button>
+        <p>Totales Gewicht: {{ TotalWeight }} </p>
         <p>Öffnungscounter: {{ Oeffnungscounter }}</p>
         <p>Klappencounter: {{ Klappencounter }}</p>
-        <p>Link zu den letzten Events:</p>
-        <p><a href="/events.html">Events</a></p>
+        
 
     </div>
         
@@ -48,9 +49,8 @@
 
     <div class="right">
         <hr>
-        <h4>Aktuelles Gewicht</h4> 
-        <p>Variable weight: {{ weight_0 }} </p>
-        <button v-on:click="getVariables2(0)">Get Variable für aktuelles Gewicht in Gramm</button>
+        <h4>Zu den Events</h4> 
+        <p><a href="/events.html">Events</a></p>
 
         <!-- Call functions example  -->
         <h4>Functions</h4>
