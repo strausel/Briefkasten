@@ -16,13 +16,13 @@ sensors_event_t event;
 //Thresholds
 //Variablen als Geschwindigkeitsindikatoren, t= 120 millisekunden (ab überschreitung a1 bis überschreitung b1 und überschreitung c1). 
 // a1, b1, c1 und d1 gehören zusammen für Klappenbetätigung (Brief Einwurf). v1, w1, x1, y1 und z1 für Öffnung (Brief Entnahme).
-double a1 = 0.2;
-double b1 = -0.2;
-double c1 = 0.1;
+double a1 = 0.5;
+double b1 = 0.2;
+double c1 = 1.1;
 
-double v1 = 0.5;
-double w1 = 0.2;
-double x1 = 1.1;
+double v1 = 0.2;
+double w1 = -0.2;
+double x1 = 0.1;
 
 double to = 10000; // 10 Sek
 double tk = 3000; //3 sek
